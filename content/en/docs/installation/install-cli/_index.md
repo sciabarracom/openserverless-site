@@ -78,27 +78,6 @@ Check that `OPS_REPO` is `http://github.com/apache/openserverless-task` and that
 
 Use `ops -t` to list the available tasks.
 
-## Create a local OpenServerless
-
-If you have [Docker](https://docs.docker.com/get-started/get-docker/) installed,
-you can now create a complete OpenServerless on your own machine with a single
-command:
-
-```bash
-ops setup mini
-```
-
-This is the fastest way to get a working system, and the recommended starting
-point: it installs everything locally, so you can try OpenServerless without a
-cluster and without a cloud account.
-
-When it finishes, follow the [Quick Start](/docs/installation/quickstart/) to
-deploy your first action.
-
-To install on a real cluster instead — Kubernetes, K3s, MicroK8s, EKS, AKS, GKE
-and more — check the [prerequisites](/docs/installation/prereq/) and then the
-[installation guides](/docs/installation/install/).
-
 ### Keeping it up to date
 
 `ops` will tell you when its tasks need updating:

@@ -24,22 +24,16 @@ Start ensuring the prerequsites are satisfied:
     We support 64-bit versions of recent Windows, MacOS and major Linux
     distributions.
 
+    **Hint:** if you already have [Go](https://go.dev) installed, you can
+    skip the installer entirely and just do:
+
+    ```bash
+    go install github.com/apache/openserverless-cli/cmd/ops@0.9.0
+    ```
+
 - Check that ops is correctly installed: open the terminal and write:
 
     ops -info
-
-- Configure the services you want to enable. By default,
-    OpenServerless will install only the serverless engine, accessible
-    in http with no services enabled.
-
-If you want to enable all the services, use:
-
-    ops config enable --all
-
-otherwise pick the services you want, among `--redis`, `--mongodb`,
-`--minio`, `--cron`, `--postgres`. Note that `--mongodb` is actually
-[FerretDB](https://www.ferretdb.com/) and requires Postgres which is
-implicitly also enabled. More details [here](/docs/installation/configure).
 
 Now, choose where to install OpenServerless.
 
@@ -72,7 +66,10 @@ then install OpenServerless in it. Once you have:
 Make sure Docker Desktop its running before the next operation. Install OpenServerless and its services in Docker with just this
 command:
 
-    ops setup devcluster
+    ops setup mini
+
+This is the recommended way to run OpenServerless locally. It requires
+**16GB of memory** and **60GB of free disk space**.
 
 Once it is installed, you can proceed to read the
 [tutorial](#../../tutorial/index.adoc) to learn how to code with it.
@@ -87,6 +84,15 @@ doing and can tolerate inefficiency, you can install with less using:
 
 If you have access to a server on the Internet, you will know its **IP
 address**.
+
+{{< blockquote important >}}
+The server must have a **public IP address**, reachable from the Internet, for
+the whole duration of the installation. This is not optional: the setup obtains
+TLS certificates from Let's Encrypt, which validates your domain by connecting
+back to your server from the outside. If the IP is private, behind NAT, or
+otherwise unreachable, that validation fails and **the installation will not
+work**.
+{{< /blockquote >}}
 
 Many cloud providers also give you a DNS name usually derived by the IP
 and very hard to remember such as
